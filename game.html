@@ -14,6 +14,7 @@
     <p id="winCount">Win Count : 0</p>
     <p id="lostCount">Lost Count : 0</p>
     <p id="tieCount">Tie Count : 0</p>
+    <button id="resetScore">Reset Score</button>
     <script>
       const score = {
         winCount: 0,
@@ -35,6 +36,18 @@
           document.getElementById("tieCount").innerText =
             "Tie Count: " + score.tieCount;
         }
+      }
+
+      function resetScore() {
+        score.winCount = 0;
+        score.lostCount = 0;
+        score.tieCount = 0;
+
+        document.getElementById("resultText").innerText = "";
+
+        document.getElementById("winCount").innerText = "Win Count: 0";
+        document.getElementById("lostCount").innerText = "Lost Count: 0";
+        document.getElementById("tieCount").innerText = "Tie Count: 0";
       }
 
       function getComputerMove() {
@@ -88,6 +101,10 @@
 
       document.getElementById("scissors").onclick = function () {
         playGame("Scissors");
+      };
+
+      document.getElementById("resetScore").onclick = function () {
+        resetScore();
       };
     </script>
   </body>
