@@ -16,11 +16,18 @@
     <p id="tieCount">Tie Count : 0</p>
     <button id="resetScore">Reset Score</button>
     <script>
-      const score = {
+      const score = JSON.parse(localStorage.getItem("score")) || {
         winCount: 0,
         lostCount: 0,
         tieCount: 0,
       };
+
+      document.getElementById("winCount").innerText =
+        "Win Count: " + score.winCount;
+      document.getElementById("lostCount").innerText =
+        "Lost Count: " + score.lostCount;
+      document.getElementById("tieCount").innerText =
+        "Tie Count: " + score.tieCount;
 
       function countScore(result) {
         if (result === "You Won!") {
@@ -36,6 +43,8 @@
           document.getElementById("tieCount").innerText =
             "Tie Count: " + score.tieCount;
         }
+
+        localStorage.setItem("score", JSON.stringify(score));
       }
 
       function resetScore() {
@@ -43,11 +52,15 @@
         score.lostCount = 0;
         score.tieCount = 0;
 
-        document.getElementById("resultText").innerText = "";
+        document.getElementById("resultText").innerText = " ";
+        document.getElementById("winCount").innerText =
+          "Win Count: " + score.winCount;
+        document.getElementById("lostCount").innerText =
+          "Lost Count: " + score.lostCount;
+        document.getElementById("tieCount").innerText =
+          "Tie Count: " + score.tieCount;
 
-        document.getElementById("winCount").innerText = "Win Count: 0";
-        document.getElementById("lostCount").innerText = "Lost Count: 0";
-        document.getElementById("tieCount").innerText = "Tie Count: 0";
+        localStorage.removeItem("score");
       }
 
       function getComputerMove() {
