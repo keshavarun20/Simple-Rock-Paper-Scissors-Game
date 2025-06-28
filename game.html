@@ -10,22 +10,30 @@
     <button id="rock">Rock</button>
     <button id="paper">Paper</button>
     <button id="scissors">Scissors</button>
+    <p id="resultText"></p>
     <p id="winCount">Win Count : 0</p>
     <p id="lostCount">Lost Count : 0</p>
+    <p id="tieCount">Tie Count : 0</p>
     <script>
-      let winCount = 0;
-
-      let lostCount = 0;
+      const score = {
+        winCount: 0,
+        lostCount: 0,
+        tieCount: 0,
+      };
 
       function countScore(result) {
         if (result === "You Won!") {
-          winCount++;
+          score.winCount++;
           document.getElementById("winCount").innerText =
-            "Win Count: " + winCount;
+            "Win Count: " + score.winCount;
         } else if (result === "You Lost!") {
-          lostCount++;
+          score.lostCount++;
           document.getElementById("lostCount").innerText =
-            "Lost Count: " + lostCount;
+            "Lost Count: " + score.lostCount;
+        } else {
+          score.tieCount++;
+          document.getElementById("tieCount").innerText =
+            "Tie Count: " + score.tieCount;
         }
       }
 
@@ -62,9 +70,12 @@
 
         countScore(result);
 
-        alert(
-          `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`
-        );
+        document.getElementById(
+          "resultText"
+        ).innerText = `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`;
+        // alert(
+        //   `You picked ${playerMove}. Computer picked ${computerMove}. ${result}`
+        // );
       }
 
       document.getElementById("rock").onclick = function () {
