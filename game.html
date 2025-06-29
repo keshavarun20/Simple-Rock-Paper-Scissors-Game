@@ -12,20 +12,24 @@
     <button id="js-scissors-button">Scissors</button>
     <p id="js-resultText"></p>
     <p id="js-moveText"></p>
-    <p id="js-scoreCounter">Wins: 0, Losses: 0, Ties: 0</p>
+    <p id="js-scoreCounter"></p>
     <button id="js-resetScore-button">Reset Score</button>
     <script>
       const scoreCounterElem = document.getElementById("js-scoreCounter");
       const resultTextElem = document.getElementById("js-resultText");
       const moveTextElem = document.getElementById("js-moveText");
-      
+
       const score = JSON.parse(localStorage.getItem("score")) || {
         wins: 0,
         losses: 0,
         ties: 0,
       };
 
-      scoreCounterElem.innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      updateScore();
+
+      function updateScore() {
+        scoreCounterElem.innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+      }
 
       function countScore(result) {
         if (result === "You Won!") {
@@ -36,7 +40,7 @@
           score.ties++;
         }
 
-        scoreCounterElem.innerText  = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+        updateScore();
 
         localStorage.setItem("score", JSON.stringify(score));
       }
@@ -46,7 +50,7 @@
         score.losses = 0;
         score.ties = 0;
 
-        scoreCounterElem.innerText  = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
+        updateScore();
 
         resultTextElem.innerText = "";
 
