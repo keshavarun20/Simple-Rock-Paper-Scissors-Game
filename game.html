@@ -3,108 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>"
+    />
+    <title>Play Rock Paper Scissors</title>
   </head>
-  <body>
-    <h2>Rock Paper Scissors</h2>
-    <button id="js-rock-button">Rock</button>
-    <button id="js-paper-button">Paper</button>
-    <button id="js-scissors-button">Scissors</button>
-    <p id="js-resultText"></p>
-    <p id="js-moveText"></p>
-    <p id="js-scoreCounter"></p>
-    <button id="js-resetScore-button">Reset Score</button>
-    <script>
-      const scoreCounterElem = document.getElementById("js-scoreCounter");
-      const resultTextElem = document.getElementById("js-resultText");
-      const moveTextElem = document.getElementById("js-moveText");
+  <body class="game-body">
+    <h2 class="game-title">Rock Paper Scissors</h2>
 
-      const score = JSON.parse(localStorage.getItem("score")) || {
-        wins: 0,
-        losses: 0,
-        ties: 0,
-      };
+    <div class="buttons-container">
+      <button id="js-rock-button" class="btn move-button">Rock</button>
+      <button id="js-paper-button" class="btn move-button">Paper</button>
+      <button id="js-scissors-button" class="btn move-button">Scissors</button>
+    </div>
 
-      updateScore();
+    <p id="js-resultText" class="result-text"></p>
+    <p id="js-moveText" class="move-text"></p>
+    <p id="js-scoreCounter" class="score-text"></p>
 
-      function updateScore() {
-        scoreCounterElem.innerText = `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
-      }
+    <button id="js-resetScore-button" class="btn reset-button">
+      Reset Score
+    </button>
 
-      function countScore(result) {
-        if (result === "You Won!") {
-          score.wins++;
-        } else if (result === "You Lost!") {
-          score.losses++;
-        } else if (result === "Tie") {
-          score.ties++;
-        }
-
-        updateScore();
-
-        localStorage.setItem("score", JSON.stringify(score));
-      }
-
-      function resetScore() {
-        score.wins = 0;
-        score.losses = 0;
-        score.ties = 0;
-
-        updateScore();
-
-        resultTextElem.innerText = "";
-
-        moveTextElem.innerText = "";
-
-        localStorage.removeItem("score");
-      }
-
-      function getComputerMove() {
-        const randomNumber = Math.random();
-
-        let computerMove = "";
-
-        if (randomNumber < 1 / 3) computerMove = "Rock";
-        else if (randomNumber < 2 / 3) computerMove = "Paper";
-        else computerMove = "Scissors";
-
-        return computerMove;
-      }
-
-      function playGame(playerMove) {
-        const computerMove = getComputerMove();
-
-        let result = "";
-
-        if (playerMove === computerMove) {
-          result = "Tie";
-        } else if (playerMove === "Rock") {
-          result = computerMove === "Paper" ? "You Lost!" : "You Won!";
-        } else if (playerMove === "Paper") {
-          result = computerMove === "Scissors" ? "You Lost!" : "You Won!";
-        } else if (playerMove === "Scissors") {
-          result = computerMove === "Rock" ? "You Lost!" : "You Won!";
-        }
-
-        countScore(result);
-
-        resultTextElem.innerText = `${result}`;
-
-        moveTextElem.innerText = `You ${playerMove} - Computer ${computerMove}`;
-      }
-
-      document.getElementById("js-rock-button").onclick = function () {
-        playGame("Rock");
-      };
-      document.getElementById("js-paper-button").onclick = function () {
-        playGame("Paper");
-      };
-      document.getElementById("js-scissors-button").onclick = function () {
-        playGame("Scissors");
-      };
-      document.getElementById("js-resetScore-button").onclick = function () {
-        resetScore();
-      };
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
