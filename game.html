@@ -3,19 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+    </style>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>"
     />
+    <link rel="stylesheet" href="styles.css" />
     <title>Play Rock Paper Scissors</title>
   </head>
-  <body class="game-body">
-    <h2 class="game-title">Rock Paper Scissors</h2>
+  <body>
+    <p class="game-title">Let's Play Rock Paper Scissors!</p>
 
     <div class="buttons-container">
-      <button id="js-rock-button" class="btn move-button">Rock</button>
-      <button id="js-paper-button" class="btn move-button">Paper</button>
-      <button id="js-scissors-button" class="btn move-button">Scissors</button>
+      <button id="js-rock-button" class="btn move-button">
+        <img src="images/Rock-emoji.png" alt="rock-img" class="move-icon" />
+      </button>
+      <button id="js-paper-button" class="btn move-button">
+        <img src="images/Paper-emoji.png" alt="paper-img" class="move-icon" />
+      </button>
+      <button id="js-scissors-button" class="btn move-button">
+        <img
+          src="images/Scissors-emoji.png"
+          alt="scissors-img"
+          class="move-icon"
+        />
+      </button>
     </div>
 
     <p id="js-resultText" class="result-text"></p>

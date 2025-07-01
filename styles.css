@@ -1,0 +1,129 @@
+body {
+  background-color: hsl(189, 9%, 15%); /* Light Teal */
+  color: hsl(209, 23%, 73%);
+  font-family: "Courier Prime", monospace;
+}
+
+.game-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+.move-icon {
+  height: 150px;
+}
+
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+}
+
+.move-button {
+  background-color: transparent;
+  border: 3px dashed hsl(209, 23%, 73%);
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.result-text {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 75px;
+}
+
+.score-text {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+.reset-button {
+  display: block;
+  margin: 30px auto;
+  font-family: "Courier Prime", monospace;
+  font-size: 20px;
+  background-color: hsl(209, 23%, 73%);
+  color: hsl(208, 39%, 38%);
+  border: none;
+  border-radius: 15px 30px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.move-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.move-box {
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: hsl(209, 23%, 73%);
+}
+
+.move-i {
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+  .buttons-container {
+    flex-wrap: wrap;      /* allow buttons to wrap to next line */
+    gap: 20px;            /* space between buttons when wrapped */
+  }
+
+  .move-button {
+    width: 200px;         /* smaller buttons on smaller screens */
+    height: 200px;
+    border-radius: 100px; /* keep circular shape */
+    margin-right: 0;      /* reset right margin to avoid awkward space */
+  }
+
+  .move-icon {
+    height: 100px;        /* smaller images inside buttons */
+  }
+}
+
+@media (max-width: 500px) {
+  .move-text {
+    flex-direction: column; /* stack moves vertically */
+    gap: 20px;
+  }
+
+  .move-i {
+    width: 80px;
+    height: 80px;
+  }
+
+  .result-text {
+    font-size: 28px;
+    margin-top: 40px;
+  }
+
+  .score-text {
+    font-size: 18px;
+    margin-top: 30px;
+  }
+
+  .reset-button {
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 12px 24px;
+  }
+}
+

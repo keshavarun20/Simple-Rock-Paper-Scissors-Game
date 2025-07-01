@@ -37,7 +37,7 @@ function resetScore() {
 
   resultTextElem.innerText = "";
 
-  moveTextElem.innerText = "";
+  moveTextElem.innerHTML = "";
 
   localStorage.removeItem("score");
 }
@@ -73,7 +73,16 @@ function playGame(playerMove) {
 
   resultTextElem.innerText = `${result}`;
 
-  moveTextElem.innerText = `You ${playerMove} - Computer ${computerMove}`;
+  moveTextElem.innerHTML = `
+  <div class="move-box">
+    <span class="label">Your Move</span>
+    <img src="images/${playerMove}-emoji.png" alt="${playerMove}-emoji" class="move-i" />
+  </div>
+  <div class="move-box">
+    <span class="label">Computer Move</span>
+    <img src="images/${computerMove}-emoji.png" alt="${computerMove}-emoji" class="move-i" />
+  </div>
+`;
 }
 
 document.getElementById("js-rock-button").onclick = function () {
