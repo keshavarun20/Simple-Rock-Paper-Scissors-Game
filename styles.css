@@ -81,6 +81,11 @@ body {
   vertical-align: middle;
 }
 
+.button-cont{
+  display: flex;
+  gap: 10px;
+}
+
 @media (max-width: 900px) {
   .buttons-container {
     flex-wrap: wrap;      /* allow buttons to wrap to next line */

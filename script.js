@@ -85,6 +85,25 @@ function playGame(playerMove) {
 `;
 }
 
+let isAutoPlaying = false;
+let intervalId;
+
+function autoPlay() {
+  if (!isAutoPlaying) {
+    intervalId = setInterval(function () {
+      isAutoPlaying = true;
+      const playerMove = getComputerMove();
+      playGame(playerMove);
+    }, 1000);
+
+    document.getElementById("js-autoPlay-button").innerHTML = "Stop Play";
+  } else {
+    isAutoPlaying = false;
+    clearInterval(intervalId);
+    document.getElementById("js-autoPlay-button").innerHTML = "Auto Play";
+  }
+}
+
 document.getElementById("js-rock-button").onclick = function () {
   playGame("Rock");
 };
@@ -93,6 +112,9 @@ document.getElementById("js-paper-button").onclick = function () {
 };
 document.getElementById("js-scissors-button").onclick = function () {
   playGame("Scissors");
+};
+document.getElementById("js-autoPlay-button").onclick = function () {
+  autoPlay();
 };
 document.getElementById("js-resetScore-button").onclick = function () {
   resetScore();
